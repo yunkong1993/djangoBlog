@@ -1,0 +1,1 @@
+cmd /k "cd /d E:\Python\django\django&&pipenv run python manage.py runserver"
