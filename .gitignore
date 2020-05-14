@@ -1,0 +1,9 @@
+*.py[cod]
+*.so
+*.egg
+*.egg-info
+dist
+built
+
+db.sqlite3
+
