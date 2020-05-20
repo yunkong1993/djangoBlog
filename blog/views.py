@@ -4,11 +4,11 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import DetailView, ListView
 
 from pure_pagination.mixins import PaginationMixin
-
+from django.contrib import messages
 from .models import Category, Post, Tag
 
 
-class IndexView(PaginationMixin,ListView):
+class IndexView(PaginationMixin, ListView):
     model = Post
     template_name = "blog/index.html"
     context_object_name = "post_list"
@@ -27,8 +27,8 @@ class ArchiveView(IndexView):
         month = self.kwargs.get("month")
         return (
             super()
-            .get_queryset()
-            .filter(created_time__year=year, created_time__month=month)
+                .get_queryset()
+                .filter(created_time__year=year, created_time__month=month)
         )
 
 
@@ -58,3 +58,15 @@ class PostDetailView(DetailView):
 
         # 视图必须返回一个 HttpResponse 对象
         return response
+
+
+def search(request):
+    q = request.GET.get('q')
+
+    if not q:
+        error_msg = "请输入搜索关键词"
+        messages.add_message(request, messages.ERROR, error_msg, extra_tags='danger')
+        return redirect('blog:index')
+
+    post_list = Post.objects.filter(Q(title__icontains=q) | Q(body__icontains=q))
+    return render(request, 'blog/index.html', {'post_list': post_list})
