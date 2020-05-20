@@ -8,7 +8,8 @@ verify_ssl = true
 [packages]
 django = "==2.2.3"
 markdown = "*"
-gunicorn = "*"
+wfastcgi = "*"
+faker = "*"
 
 [requires]
 python_version = "3.8"
