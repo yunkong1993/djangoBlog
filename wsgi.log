@@ -214,3 +214,66 @@ ModuleNotFoundError: No module named 'django'
 2020-05-20 09:30:55.230701: wfastcgi.py 3.0.0 initialized
 2020-05-20 09:48:21.846774: wfastcgi.py will restart when files in C:\inetpub\wwwroot\django\ are changed: .*((\.py)|(\.config))$
 2020-05-20 09:48:21.846774: wfastcgi.py 3.0.0 initialized
+2020-05-20 10:21:42.807362: wfastcgi.py will restart when files in C:\inetpub\wwwroot\django\ are changed: .*((\.py)|(\.config))$
+2020-05-20 10:21:42.807362: wfastcgi.py 3.0.0 initialized
+2020-05-20 10:53:42.288397: wfastcgi.py will restart when files in C:\inetpub\wwwroot\django\ are changed: .*((\.py)|(\.config))$
+2020-05-20 10:53:42.288397: wfastcgi.py 3.0.0 initialized
+2020-05-20 11:16:36.047189: wfastcgi.py will restart when files in C:\inetpub\wwwroot\django\ are changed: .*((\.py)|(\.config))$
+2020-05-20 11:16:36.047189: wfastcgi.py 3.0.0 initialized
+2020-05-20 11:48:15.165583: wfastcgi.py will restart when files in C:\inetpub\wwwroot\django\ are changed: .*((\.py)|(\.config))$
+2020-05-20 11:48:15.165583: wfastcgi.py 3.0.0 initialized
+2020-05-20 11:59:04.241536: wfastcgi.py will restart when files in C:\inetpub\wwwroot\django\ are changed: .*((\.py)|(\.config))$
+2020-05-20 11:59:04.257161: wfastcgi.py 3.0.0 initialized
+2020-05-20 12:22:26.757491: wfastcgi.py will restart when files in C:\inetpub\wwwroot\django\ are changed: .*((\.py)|(\.config))$
+2020-05-20 12:22:26.757491: wfastcgi.py 3.0.0 initialized
+2020-05-20 12:27:13.826777: wfastcgi.py exiting because blog\views.py has changed, matching .*((\.py)|(\.config))$
+2020-05-20 12:27:13.826777: Running on_exit tasks
+2020-05-20 12:28:01.504594: Error occurred while reading WSGI handler:
+
+Traceback (most recent call last):
+  File "C:\inetpub\wwwroot\django\wfastcgi.py", line 791, in main
+    env, handler = read_wsgi_handler(response.physical_path)
+  File "C:\inetpub\wwwroot\django\wfastcgi.py", line 633, in read_wsgi_handler
+    handler = get_wsgi_handler(os.getenv("WSGI_HANDLER"))
+  File "C:\inetpub\wwwroot\django\wfastcgi.py", line 605, in get_wsgi_handler
+    handler = handler()
+  File "C:\Users\Administrator\.virtualenvs\django-ORF3S4_Z\lib\site-packages\django\core\wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "C:\Users\Administrator\.virtualenvs\django-ORF3S4_Z\lib\site-packages\django\__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "C:\Users\Administrator\.virtualenvs\django-ORF3S4_Z\lib\site-packages\django\apps\registry.py", line 83, in populate
+    raise RuntimeError("populate() isn't reentrant")
+RuntimeError: populate() isn't reentrant
+
+
+StdOut: 
+
+StdErr: 
+2020-05-20 12:28:01.504594: Unhandled exception in wfastcgi.py: Traceback (most recent call last):
+  File "C:\inetpub\wwwroot\django\wfastcgi.py", line 791, in main
+    env, handler = read_wsgi_handler(response.physical_path)
+  File "C:\inetpub\wwwroot\django\wfastcgi.py", line 633, in read_wsgi_handler
+    handler = get_wsgi_handler(os.getenv("WSGI_HANDLER"))
+  File "C:\inetpub\wwwroot\django\wfastcgi.py", line 605, in get_wsgi_handler
+    handler = handler()
+  File "C:\Users\Administrator\.virtualenvs\django-ORF3S4_Z\lib\site-packages\django\core\wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "C:\Users\Administrator\.virtualenvs\django-ORF3S4_Z\lib\site-packages\django\__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "C:\Users\Administrator\.virtualenvs\django-ORF3S4_Z\lib\site-packages\django\apps\registry.py", line 83, in populate
+    raise RuntimeError("populate() isn't reentrant")
+RuntimeError: populate() isn't reentrant
+2020-05-20 12:28:01.504594: Running on_exit tasks
+2020-05-20 12:28:01.504594: wfastcgi.py 3.0.0 closed
+2020-05-20 12:30:12.491484: wfastcgi.py will restart when files in C:\inetpub\wwwroot\django\ are changed: .*((\.py)|(\.config))$
+2020-05-20 12:30:12.491484: wfastcgi.py 3.0.0 initialized
+2020-05-20 12:43:08.734904: wfastcgi.py will restart when files in C:\inetpub\wwwroot\django\ are changed: .*((\.py)|(\.config))$
+2020-05-20 12:43:08.750530: wfastcgi.py 3.0.0 initialized
+2020-05-20 12:48:51.178979: wfastcgi.py will restart when files in C:\inetpub\wwwroot\django\ are changed: .*((\.py)|(\.config))$
+2020-05-20 12:48:51.178979: wfastcgi.py 3.0.0 initialized
+2020-05-20 13:00:26.082946: wfastcgi.py will restart when files in C:\inetpub\wwwroot\django\ are changed: .*((\.py)|(\.config))$
+2020-05-20 13:00:26.082946: wfastcgi.py 3.0.0 initialized
+2020-05-20 13:10:57.157562: wfastcgi.py will restart when files in C:\inetpub\wwwroot\django\ are changed: .*((\.py)|(\.config))$
+2020-05-20 13:10:57.173188: wfastcgi.py 3.0.0 initialized
+2020-05-20 13:24:18.812878: wfastcgi.py will restart when files in C:\inetpub\wwwroot\django\ are changed: .*((\.py)|(\.config))$
+2020-05-20 13:24:18.812878: wfastcgi.py 3.0.0 initialized
