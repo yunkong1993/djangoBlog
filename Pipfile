@@ -10,6 +10,7 @@ django = "==2.2.3"
 markdown = "*"
 wfastcgi = "*"
 faker = "*"
+django-pure-pagination = "*"
 
 [requires]
 python_version = "3.8"

@@ -3,12 +3,12 @@ from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import DetailView, ListView
 
-#from pure_pagination.mixins import PaginationMixin
+from pure_pagination.mixins import PaginationMixin
 
 from .models import Category, Post, Tag
 
 
-class IndexView(ListView):
+class IndexView(PaginationMixin,ListView):
     model = Post
     template_name = "blog/index.html"
     context_object_name = "post_list"
