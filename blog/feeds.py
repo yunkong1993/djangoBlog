@@ -5,13 +5,13 @@ from .models import Post
 
 class AllPostsRssFeed(Feed):
     # 显示在聚合阅读器上的标题
-    title = "HelloDjango-blog-tutorial"
+    title = "Django-blog"
 
     # 通过聚合阅读器跳转到网站的地址
     link = "/"
 
     # 显示在聚合阅读器上的描述信息
-    description = "HelloDjango-blog-tutorial 全部文章"
+    description = "Django-blog 全部文章"
 
     # 需要显示的内容条目
     def items(self):
