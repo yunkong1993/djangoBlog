@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, TemplateView
 
 from pure_pagination.mixins import PaginationMixin
 from django.contrib import messages
@@ -13,6 +13,12 @@ class IndexView(PaginationMixin, ListView):
     template_name = "blog/index.html"
     context_object_name = "post_list"
     paginate_by = 10
+
+
+class AboutView(TemplateView):
+    model = Post
+    template_name = "blog/about.html"
+    context_object_name = "about"
 
 
 class CategoryView(IndexView):

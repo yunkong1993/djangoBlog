@@ -11,6 +11,7 @@ markdown = "*"
 wfastcgi = "*"
 faker = "*"
 django-pure-pagination = "*"
+django-haystack = "*"
 
 [requires]
 python_version = "3.8"
