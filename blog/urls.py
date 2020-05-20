@@ -11,5 +11,7 @@ urlpatterns = [
     path('archives/<int:year>/<int:month>/', views.ArchiveView.as_view(), name='archive'),
     path('categories/<int:pk>/', views.CategoryView.as_view(), name='category'),
     path('tags/<int:pk>/', views.TagView.as_view(), name='tag'),
+
+
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
