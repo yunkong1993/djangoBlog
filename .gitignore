@@ -8,3 +8,4 @@ built
 db.sqlite3
 
 wsgi.log
+/static/
