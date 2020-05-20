@@ -9,3 +9,10 @@ db.sqlite3
 
 wsgi.log
 /static/
+<<<<<<< HEAD
+=======
+/web.config
+/wfastcgi.py
+/.idea/vcs.xml
+/.idea/encodings.xml
+>>>>>>> b20c24d069d5de0b0f457697cc3f5e5e226e5353
