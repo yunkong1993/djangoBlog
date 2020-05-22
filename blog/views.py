@@ -21,6 +21,12 @@ class AboutView(TemplateView):
     context_object_name = "about"
 
 
+class ContactView(TemplateView):
+    model = Post
+    template_name = "blog/contact.html"
+    context_object_name = "contact"
+
+
 class CategoryView(IndexView):
     def get_queryset(self):
         cate = get_object_or_404(Category, pk=self.kwargs.get("pk"))
