@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="{% static 'blog/css/custom.css' %}">
     <link href="https://cdn.bootcss.com/highlight.js/9.15.8/styles/github.min.css" rel="stylesheet">
 
+    <!-- 卡通看板娘 -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/assets/waifu.css' %}"/>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <style>
         .codehilite {
             padding: 0;
@@ -99,6 +103,25 @@
             </div><!-- col-md-8 -->
         </div>
     </header>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/assets/waifu.css' %}"/>
+    <div class="waifu" id="waifu">
+        <div class="waifu-tips" style="opacity: 1;"></div>
+        <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+        <div class="waifu-tool">
+            <span class="fui-home"></span>
+            <span class="fui-chat"></span>
+            <span class="fui-eye"></span>
+            <span class="fui-user"></span>
+            <span class="fui-photo"></span>
+            <!-- <span class="fui-info-circle"></span> -->
+            <span class="fui-cross"></span>
+        </div>
+    </div>
+    <script src="{% static 'blog/css/assets/live2d.js' %}"></script>
+    <script src="{% static 'blog/css/assets/waifu-tips.js' %}"></script>
+    <script type="text/javascript">initModel()</script>
+
     {% if messages %}
         {% for message in messages %}
             <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
