@@ -19,7 +19,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#b*nlv6ypn&!6zks7flrv**j4(#b0z(6&oi6ernx_p+7104i#q'
+with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'secret_key.txt'))as f:
+    SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,11 +42,10 @@ INSTALLED_APPS = [
 
 # django-pure-pagination 分页设置
 PAGINATION_SETTINGS = {
-    'PAGE_RANGE_DISPLAYED': 4, # 分页条当前页前后应该显示的总页数（两边均匀分布，因此要设置为偶数），
-    'MARGIN_PAGES_DISPLAYED': 2, # 分页条开头和结尾显示的页数
-    'SHOW_FIRST_PAGE_WHEN_INVALID': True, # 当请求了不存在页，显示第一页
+    'PAGE_RANGE_DISPLAYED': 4,  # 分页条当前页前后应该显示的总页数（两边均匀分布，因此要设置为偶数），
+    'MARGIN_PAGES_DISPLAYED': 2,  # 分页条开头和结尾显示的页数
+    'SHOW_FIRST_PAGE_WHEN_INVALID': True,  # 当请求了不存在页，显示第一页
 }
-
 
 MIDDLEWARE = [
 
