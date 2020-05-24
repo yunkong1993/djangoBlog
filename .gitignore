@@ -6,7 +6,7 @@ dist
 built
 
 db.sqlite3
-
+/blogproject/secret_key.txt
 wsgi.log
 /static/
 <<<<<<< HEAD
@@ -16,4 +16,3 @@ wsgi.log
 /.idea/vcs.xml
 /.idea/encodings.xml
 >>>>>>> b20c24d069d5de0b0f457697cc3f5e5e226e5353
-/blogproject/secret_key.txt
