@@ -65,7 +65,6 @@ class Post(models.Model):
     """
     title = models.CharField('标题', max_length=70)
     body = models.TextField('正文')
-    # created_time = models.DateTimeField('创建时间')
     created_time = models.DateTimeField('创建时间', default=timezone.now)
     modified_time = models.DateTimeField('修改时间')
     excerpt = models.CharField('摘要', max_length=200, blank=True)
@@ -97,8 +96,9 @@ class Post(models.Model):
 
         # 先将 Markdown 文本渲染成 HTML 文本
         # strip_tags 去掉 HTML 文本的全部 HTML 标签
-        # 从文本摘取前 54 个字符赋给 excerpt
-        self.excerpt = strip_tags(md.convert(self.body))[:54]
+        # 如果未填写摘要的话，从文本摘取前 54 个字符赋给 excerpt
+        if self.excerpt == "":
+            self.excerpt = strip_tags(md.convert(self.body))[:54]
 
         super().save(*args, **kwargs)
 
