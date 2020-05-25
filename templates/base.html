@@ -88,8 +88,11 @@
                             <li class="cl-effect-11"><a href="{% url 'blog:index' %}" data-hover="博客">博客</a></li>
                             <li class="cl-effect-11"><a href="{% url 'blog:about' %}" data-hover="关于">关于</a></li>
                             <li class="cl-effect-11"><a href="{% url 'blog:contact' %}" data-hover="联系">联系</a></li>
+                            <li class="cl-effect-11"><a id="login" href="/admin/"><span class="ion-log-in"></span></a></li>
                         </ul>
+
                     </div><!-- /.navbar-collapse -->
+
                 </nav>
                 <div id="header-search-box">
                     <a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>
@@ -100,6 +103,7 @@
                         </form>
                     </div>
                 </div>
+
             </div><!-- col-md-8 -->
         </div>
     </header>
@@ -194,8 +198,8 @@
     <nav>
         <li><a href="{% url 'blog:index' %}">首页</a></li>
         <li><a href="{% url 'blog:index' %}">博客</a></li>
-        <li><a href="/about.html">关于</a></li>
-        <li><a href="/contact.html">联系</a></li>
+        <li><a href="/about">关于</a></li>
+        <li><a href="/contact">联系</a></li>
         </ul>
     </nav>
 </div>
