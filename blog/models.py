@@ -2,11 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
-import markdown, re
+import markdown
+import re
 from django.utils.html import strip_tags
 from django.utils.text import slugify
 from markdown.extensions.toc import TocExtension
 from django.utils.functional import cached_property
+from mdeditor.fields import MDTextField
 
 
 def generate_rich_content(value):
@@ -64,7 +66,8 @@ class Post(models.Model):
     文章的数据库表稍微复杂一点，主要是涉及的字段更多。
     """
     title = models.CharField('标题', max_length=70)
-    body = models.TextField('正文')
+    # body = models.TextField('正文')
+    body = MDTextField()
     created_time = models.DateTimeField('创建时间', default=timezone.now)
     modified_time = models.DateTimeField('修改时间')
     excerpt = models.CharField('摘要', max_length=200, blank=True)

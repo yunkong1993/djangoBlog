@@ -12,6 +12,7 @@ wfastcgi = "*"
 faker = "*"
 django-pure-pagination = "*"
 django-haystack = "*"
+django-mdeditor = "*"
 
 [requires]
 python_version = "3.8"
