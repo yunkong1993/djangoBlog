@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from blog.models import generate_rich_content
 
 
 class Comment(models.Model):
@@ -16,3 +17,9 @@ class Comment(models.Model):
 
     def __str__(self):
         return '{}: {}'.format(self.name, self.text[:20])
+
+    @property
+    def text_html(self):
+        return generate_rich_content(self.text).get("content", "")
+
+
