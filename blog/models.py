@@ -75,6 +75,7 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag, verbose_name='标签', blank=True)
     author = models.ForeignKey(User, verbose_name='作者', on_delete=models.CASCADE)
     views = models.PositiveIntegerField(default=0, editable=False)
+    is_private = models.BooleanField(verbose_name='私人文档', default=False)
 
     class Meta:
         verbose_name = '文章'
