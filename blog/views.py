@@ -44,6 +44,18 @@ class ArchiveView(IndexView):
         )
 
 
+# class PrivateView(IndexView):
+#     def get_queryset(self):
+#         author = self.kwargs.get("author")
+#         return (
+#             super()
+#                 .get_queryset()
+#                 .filter(author=author)
+#         )
+#     post_list = Post.objects.filter(Q(is_private=False) | Q(author=request.user.username))
+#     return render(request, 'blog/index.html', {'post_list': post_list})
+
+
 class TagView(IndexView):
     def get_queryset(self):
         t = get_object_or_404(Tag, pk=self.kwargs.get("pk"))
