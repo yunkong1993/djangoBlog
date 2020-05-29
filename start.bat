@@ -1,1 +1,0 @@
-cmd /k "cd /d C:\inetpub\wwwroot\django&&pipenv run python manage.py runserver 0.0.0.0:80"

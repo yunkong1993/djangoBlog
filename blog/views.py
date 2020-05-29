@@ -38,22 +38,16 @@ class ArchiveView(IndexView):
         year = self.kwargs.get("year")
         month = self.kwargs.get("month")
         return (
-            super()
-                .get_queryset()
-                .filter(created_time__year=year, created_time__month=month)
+            super().get_queryset().filter(created_time__year=year, created_time__month=month)
         )
 
 
-# class PrivateView(IndexView):
-#     def get_queryset(self):
-#         author = self.kwargs.get("author")
-#         return (
-#             super()
-#                 .get_queryset()
-#                 .filter(author=author)
-#         )
-#     post_list = Post.objects.filter(Q(is_private=False) | Q(author=request.user.username))
-#     return render(request, 'blog/index.html', {'post_list': post_list})
+class PrivateView(IndexView):
+    def get_queryset(self):
+        if self.request.user.is_authenticated:  # 如果有用户登陆
+            return super().get_queryset().filter(Q(is_private=False) | Q(author=self.request.user))
+        else:
+            return super().get_queryset().filter(is_private=False)
 
 
 class TagView(IndexView):
