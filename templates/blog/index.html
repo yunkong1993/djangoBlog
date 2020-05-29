@@ -15,7 +15,13 @@
                     <span class="comments-link"><a
                             href="{{ post.get_absolute_url }}#comment-area"> 评论 {{ post.comment_set.count }}</a></span>
                     <span class="views-count"><a href="{{ post.get_absolute_url }}"> 阅读 {{ post.views }}</a></span>
-                    <span class="is-private"><a href="#">公开</a></span>
+                    <span class="is-private"><a href="#">
+                        {% if post.is_private %}
+                            私密
+                        {% else %}
+                            公开
+                        {% endif %}
+                    </a></span>
                 </div>
             </header>
             <div class="entry-content clearfix">
