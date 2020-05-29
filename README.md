@@ -7,7 +7,8 @@
 django的博客框架是 来自追梦人物的github HelloGitHub-Team / HelloDjango-blog-tutorial项目 ；
 右下角的看板娘 来自GitHub的live2d-widget项目 。
 
-## 网站URL:http://zxm1221.com/
+## 网站URL
+http://zxm1221.com/
 
 
 
