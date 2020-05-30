@@ -30,16 +30,22 @@ class ContactView(TemplateView):
 class CategoryView(IndexView):
     def get_queryset(self):
         cate = get_object_or_404(Category, pk=self.kwargs.get("pk"))
-        return super().get_queryset().filter(category=cate)
+        q = super().get_queryset().filter(category=cate)
+        if self.request.user.is_authenticated:  # 如果有用户登陆
+            return q.filter(Q(is_private=False) | Q(author=self.request.user))
+        else:
+            return q.filter(is_private=False)
 
 
 class ArchiveView(IndexView):
     def get_queryset(self):
         year = self.kwargs.get("year")
         month = self.kwargs.get("month")
-        return (
-            super().get_queryset().filter(created_time__year=year, created_time__month=month)
-        )
+        q = super().get_queryset().filter(created_time__year=year, created_time__month=month)
+        if self.request.user.is_authenticated:  # 如果有用户登陆
+            return q.filter(Q(is_private=False) | Q(author=self.request.user))
+        else:
+            return q.filter(is_private=False)
 
 
 class PrivateView(IndexView):
@@ -53,7 +59,11 @@ class PrivateView(IndexView):
 class TagView(IndexView):
     def get_queryset(self):
         t = get_object_or_404(Tag, pk=self.kwargs.get("pk"))
-        return super().get_queryset().filter(tags=t)
+        q = super().get_queryset().filter(tags=t)
+        if self.request.user.is_authenticated:  # 如果有用户登陆
+            return q.filter(Q(is_private=False) | Q(author=self.request.user))
+        else:
+            return q.filter(is_private=False)
 
 
 # 记得在顶部导入 DetailView
@@ -86,5 +96,5 @@ def search(request):
         messages.add_message(request, messages.ERROR, error_msg, extra_tags='danger')
         return redirect('blog:index')
 
-    post_list = Post.objects.filter(Q(title__icontains=q) | Q(body__icontains=q))
+    post_list = Post.objects.filter(Q(title__icontains=q) | Q(body__icontains=q), is_private=False)
     return render(request, 'blog/index.html', {'post_list': post_list})
