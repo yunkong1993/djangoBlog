@@ -10,6 +10,9 @@ django的博客框架是 来自追梦人物的github HelloGitHub-Team / HelloDja
 ## 网站URL
 http://zxm1221.com/
 
+## 更新记录
+05/30：增加了私密文件的功能，并在标签、分类、搜索等屏蔽了私密文件，测试并上线。
+
 
 
 
