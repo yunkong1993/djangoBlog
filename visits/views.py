@@ -1,14 +1,12 @@
 from .models import Userip, VisitNumber
 from django.utils import timezone
-
-import urllib.request
-import json
+from django.conf import settings
 from qqwry import QQwry
 
 
 def ip2city(ip):
     q = QQwry()
-    q.load_file('qqwry.dat')
+    q.load_file(settings.QQWRY_ROOT)
     result = q.lookup(ip)
     if result is not None:
         city = result[0]
