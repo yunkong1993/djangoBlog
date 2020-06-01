@@ -19,7 +19,7 @@ class Userip(models.Model):
 
 # 网站总访问次数
 class VisitNumber(models.Model):
-    day = models.DateField(verbose_name='日期', default=timezone.now)
+    day = models.DateField(verbose_name='日期', default=timezone.now())
     day_count = models.IntegerField(verbose_name='日访问量', default=0)
     count = models.IntegerField(verbose_name='总访问量', default=0)  # 网站访问总次数
 

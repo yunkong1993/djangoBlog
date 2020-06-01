@@ -40,12 +40,12 @@ def change_info(request):
     if ip_exist:  # 判断是否存在该ip
         uobj = ip_exist[0]
         uobj.count += 1
-        uobj.modified_time = timezone.now
+        uobj.modified_time = timezone.now()
     else:
         uobj = Userip()
         uobj.ip = client_ip
         uobj.count = 1
-        uobj.modified_time = timezone.now
+        uobj.modified_time = timezone.now()
         uobj.ip_country = ip2city(str(client_ip))
     uobj.save()
 
