@@ -3,17 +3,19 @@ from django.utils import timezone
 
 import urllib.request
 import json
+from qqwry import QQwry
 
 
 def ip2city(ip):
-    api_url = "http://ip.taobao.com/service/getIpInfo.php?ip=%s" % ip
-    content = urllib.request.urlopen(api_url).read()
-    data = json.loads(content)['data']
-    code = json.loads(content)['code']
-    if code == 0:
-        return data["country"] + data["region"] + data["city"]
+    q = QQwry()
+    q.load_file('qqwry.dat')
+    result = q.lookup(ip)
+    if result is not None:
+        city = result[0]
+        type_net = result[1]
+        return city + '\t' + type_net + '\n'
     else:
-        return "error"
+        return ''
 
 
 # 修改网站访问量和访问ip等信息
@@ -41,6 +43,8 @@ def change_info(request):
         uobj = ip_exist[0]
         uobj.count += 1
         uobj.modified_time = timezone.now()
+        if uobj.ip_country == '':
+            uobj.ip_country = ip2city(str(client_ip))
     else:
         uobj = Userip()
         uobj.ip = client_ip

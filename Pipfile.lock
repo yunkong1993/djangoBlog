@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "aeaf5eacbb01c3222bea5ce8e1a693ac6fe74f5676f109b3f4fd395b7e75e5d8"
+            "sha256": "909c92e4939df0de67f16430174c466e063dc772d7d4218da1708b392d90bee8"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -74,6 +74,13 @@
                 "sha256:c35965d010ce31b23eeb663ed3cc8c906275d6be1a34393a1d73a41febf4a048"
             ],
             "version": "==2020.1"
+        },
+        "qqwry-py3": {
+            "hashes": [
+                "sha256:ce82155f8d7ee04aa5797a429ba11187bcb745c86d3ac090c67aad5fb3f2f646"
+            ],
+            "index": "pypi",
+            "version": "==1.0.8"
         },
         "six": {
             "hashes": [
