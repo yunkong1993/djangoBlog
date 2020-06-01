@@ -1,3 +1,5 @@
+![](https://img.shields.io/badge/Python-3.8-green)
+![](https://img.shields.io/badge/Django-2.2-green)
 # DjangoBlog
 ## 建站说明
 关于这个网站随便说几句，搭这个站目的已经搞不清楚了，
