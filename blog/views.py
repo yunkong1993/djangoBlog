@@ -6,6 +6,7 @@ from django.views.generic import DetailView, ListView, TemplateView
 from pure_pagination.mixins import PaginationMixin
 from django.contrib import messages
 from .models import Category, Post, Tag
+from visits.views import change_info
 
 
 class IndexView(PaginationMixin, ListView):
@@ -50,6 +51,7 @@ class ArchiveView(IndexView):
 
 class PrivateView(IndexView):
     def get_queryset(self):
+        change_info(self.request)
         if self.request.user.is_authenticated:  # 如果有用户登陆
             return super().get_queryset().filter(Q(is_private=False) | Q(author=self.request.user))
         else:
