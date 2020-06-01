@@ -6,6 +6,8 @@ from django.utils import timezone
 class Userip(models.Model):
     ip = models.CharField(verbose_name='IP地址', max_length=30)  # ip地址
     count = models.IntegerField(verbose_name='访问次数', default=0)  # 该ip访问次数
+    modified_time = models.DateTimeField(verbose_name='最后操作时间', default=timezone.now())
+    ip_country = models.CharField(verbose_name='ip归属地', max_length=50, default='')
 
     class Meta:
         verbose_name = '用户信息'

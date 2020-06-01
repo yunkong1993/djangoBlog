@@ -32,7 +32,7 @@ class VisitNumberAdmin(ReadOnlyModelAdmin):
 
 
 class UseripAdmin(ReadOnlyModelAdmin):
-    list_display = ['ip', 'count']
+    list_display = ['ip', 'ip_country', 'modified_time', 'count']
 
 
 admin.site.register(VisitNumber, VisitNumberAdmin)

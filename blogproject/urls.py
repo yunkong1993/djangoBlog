@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls')),
     path('', include('comments.urls')),
+    path('', include('visits.urls')),
     path('all/rss/', AllPostsRssFeed(), name='rss'),
 ]

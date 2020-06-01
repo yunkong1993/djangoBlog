@@ -1,6 +1,20 @@
 from .models import Userip, VisitNumber
 from django.utils import timezone
 
+import urllib.request
+import json
+
+
+def ip2city(ip):
+    api_url = "http://ip.taobao.com/service/getIpInfo.php?ip=%s" % ip
+    content = urllib.request.urlopen(api_url).read()
+    data = json.loads(content)['data']
+    code = json.loads(content)['code']
+    if code == 0:
+        return data["country"] + data["region"] + data["city"]
+    else:
+        return "error"
+
 
 # 修改网站访问量和访问ip等信息
 def change_info(request):
@@ -26,10 +40,13 @@ def change_info(request):
     if ip_exist:  # 判断是否存在该ip
         uobj = ip_exist[0]
         uobj.count += 1
+        uobj.modified_time = timezone.now()
     else:
         uobj = Userip()
         uobj.ip = client_ip
         uobj.count = 1
+        uobj.modified_time = timezone.now()
+        uobj.ip_country=ip2city(str(client_ip))
     uobj.save()
 
     # 增加今日访问次数
@@ -42,4 +59,5 @@ def change_info(request):
         temp = VisitNumber()
         temp.dayTime = date
         temp.count = 1
+
     temp.save()
