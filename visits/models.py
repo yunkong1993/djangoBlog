@@ -17,15 +17,26 @@ class Userip(models.Model):
         return self.ip
 
 
+class TotalCount(models.Model):
+    total_count = models.IntegerField(verbose_name='总访问量', default=0)  # 网站访问总次数
+
+    class Meta:
+        verbose_name = '总访问量'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return str(self.total_count)
+
+
 # 网站总访问次数
 class VisitNumber(models.Model):
     day = models.DateField(verbose_name='日期', default=timezone.now)
     day_count = models.IntegerField(verbose_name='日访问量', default=0)
-    count = models.IntegerField(verbose_name='总访问量', default=0)  # 网站访问总次数
+    total_count = models.IntegerField(verbose_name='总访问量', default=0)  # 网站访问总次数
 
     class Meta:
         verbose_name = '访问量'
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return str(self.count)
+        return str(self.day)
