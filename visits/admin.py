@@ -28,10 +28,15 @@ class ReadOnlyModelAdmin(admin.ModelAdmin):
 
 
 class VisitNumberAdmin(ReadOnlyModelAdmin):
+    list_per_page = 20  # 默认为100条
     list_display = ['day', 'day_count', 'total_count']
 
 
 class UseripAdmin(ReadOnlyModelAdmin):
+    list_per_page = 20  # 默认为100条
+
+    # 指定方法列显示的名称
+    ordering = ('-modified_time',)
     list_display = ['ip', 'ip_country', 'modified_time', 'count']
 
 
