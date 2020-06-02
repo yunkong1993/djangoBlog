@@ -28,7 +28,7 @@ class ReadOnlyModelAdmin(admin.ModelAdmin):
 
 
 class VisitNumberAdmin(ReadOnlyModelAdmin):
-    list_display = ['day', 'day_count', 'count']
+    list_display = ['day', 'day_count', 'total_count']
 
 
 class UseripAdmin(ReadOnlyModelAdmin):

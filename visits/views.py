@@ -1,4 +1,4 @@
-from .models import Userip, VisitNumber
+from .models import Userip, VisitNumber, TotalCount
 from django.utils import timezone
 from django.conf import settings
 from qqwry import QQwry
@@ -22,10 +22,10 @@ def change_info(request):
     count_nums = VisitNumber.objects.filter(id=1)
     if count_nums:
         count_nums = count_nums[0]
-        count_nums.count += 1
+        count_nums.total_count += 1
     else:
         count_nums = VisitNumber()
-        count_nums.count = 1
+        count_nums.total_count = 1
     count_nums.save()
 
     # 记录访问ip和每个ip的次数
@@ -57,9 +57,11 @@ def change_info(request):
     if today:
         temp = today[0]
         temp.day_count += 1
+        temp.total_count = count_nums.total_count
     else:
         temp = VisitNumber()
-        temp.dayTime = date
-        temp.count = 1
+        temp.date = date
+        temp.day_count = 1
+        temp.total_count = count_nums.total_count
 
     temp.save()
