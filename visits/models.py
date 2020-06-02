@@ -17,6 +17,7 @@ class Userip(models.Model):
         return self.ip
 
 
+
 class TotalCount(models.Model):
     total_count = models.IntegerField(verbose_name='总访问量', default=0)  # 网站访问总次数
 
