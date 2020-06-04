@@ -65,10 +65,4 @@ def change_info(request):
         temp.day_count = 1
         temp.total_count = count_nums.total_count
 
-    # temp.save()
-    # today = VisitNumber.objects.filter(day="2020-6-2")
-    # if today:
-    #     temp = today[0]
-    #     temp.day_count = 1
-    #     temp.total_count = 28
-    # temp.save()
+    temp.save()
