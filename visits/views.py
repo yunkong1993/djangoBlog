@@ -53,6 +53,7 @@ def change_info(request):
 
     # 增加今日访问次数
     date = timezone.now().date()
+    print(timezone.now())
     today = VisitNumber.objects.filter(day=date)
     if today:
         temp = today[0]
