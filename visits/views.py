@@ -19,7 +19,7 @@ def ip2city(ip):
 # 修改网站访问量和访问ip等信息
 def change_info(request):
     # 每一次访问，网站总访问次数加一
-    count_nums = VisitNumber.objects.filter(id=1)
+    count_nums = VisitNumber.objects.all()
     if count_nums:
         count_nums = count_nums[0]
         count_nums.total_count += 1
@@ -64,4 +64,10 @@ def change_info(request):
         temp.day_count = 1
         temp.total_count = count_nums.total_count
 
-    temp.save()
+    # temp.save()
+    # today = VisitNumber.objects.filter(day="2020-6-2")
+    # if today:
+    #     temp = today[0]
+    #     temp.day_count = 1
+    #     temp.total_count = 28
+    # temp.save()
