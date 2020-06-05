@@ -19,12 +19,12 @@ def ip2city(ip):
 # 修改网站访问量和访问ip等信息
 def change_info(request):
     # 每一次访问，网站总访问次数加一
-    count_nums = VisitNumber.objects.all()
+    count_nums = TotalCount.objects.all()
     if count_nums:
         count_nums = count_nums[0]
         count_nums.total_count += 1
     else:
-        count_nums = VisitNumber()
+        count_nums = TotalCount()
         count_nums.total_count = 1
     count_nums.save()
 
@@ -53,7 +53,6 @@ def change_info(request):
 
     # 增加今日访问次数
     date = timezone.now().date()
-    print(timezone.now())
     today = VisitNumber.objects.filter(day=date)
     if today:
         temp = today[0]
