@@ -27,7 +27,7 @@ class ReadOnlyModelAdmin(admin.ModelAdmin):
         return False
 
 
-class VisitNumberAdmin(ReadOnlyModelAdmin):
+class VisitNumberAdmin(admin.ModelAdmin):
     list_per_page = 20  # 默认为100条
     list_display = ['day', 'day_count', 'total_count']
 
