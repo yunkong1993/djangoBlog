@@ -7,6 +7,7 @@ from .get_detail import get_detail
 from .models import VideoDetailItem
 from .AES import decrypt_string
 import json, re
+from urllib.parse import quote
 
 
 class VideoView(TemplateView):
@@ -46,9 +47,9 @@ def search(request):
         error_msg = "请输入搜索关键词"
         messages.add_message(request, messages.ERROR, error_msg, extra_tags='danger')
         return redirect('blog:index')
-
+    q = quote(q)
     video_list = get_index_list(q=q)
-    print(video_list)
+
     return render(request, 'video/video_index.html', {'video_list': video_list})
 
 
