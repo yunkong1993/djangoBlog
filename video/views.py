@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from django.views.generic import DetailView, ListView, TemplateView
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
@@ -21,6 +21,22 @@ class VideoDetailView(TemplateView):
     context_object_name = "video_detail"
 
 
+def my_login_required(func):
+    '''自定义 登录验证 装饰器'''
+
+    def check_login_status(request):
+        '''检查登录状态'''
+        if request.session.has_key('user_id'):
+            # 当前有用户登录，正常跳转
+            return search(request)
+        else:
+            # 当前没有用户登录，跳转到登录页面
+            return HttpResponseRedirect('/admin')
+
+    return check_login_status
+
+
+@my_login_required
 def search(request):
     q = request.GET.get('q')
 
@@ -34,9 +50,7 @@ def search(request):
     return render(request, 'video/video_index.html', {'video_list': video_list})
 
 
-gb_video_items = []
-
-
+@my_login_required
 def detail(request):
     m = request.GET.get('m')
 
@@ -51,6 +65,7 @@ def detail(request):
     return render(request, 'video/video_detail.html', {'video_detail': video_detail, 'video_items': video_items})
 
 
+@my_login_required
 def play(request):
     p = request.GET.get('p')
 
