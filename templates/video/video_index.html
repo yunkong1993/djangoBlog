@@ -1,0 +1,43 @@
+{% extends 'video_base.html' %}
+{% block main %}
+    <main class="col-md-12">
+        <div class="searchbox" style="margin-bottom: 20px">
+            <form onsubmit="" method="get" id="soform" action="/video/search">
+                <select>
+                    <option value="zuidazy">线路1</option>
+                    <option value="okzy">线路2</option>
+                    <option value="subo">线路3</option>
+                    <option value="mahuazy">线路4</option>
+                </select>
+                <input autocomplete="off" size="50" maxlength="100" value="" id="query_kw" class="query"
+                       name="q"
+                       style="line-height:13px"
+                       placeholder=""
+                       required>
+                <input type="submit" align="middle" value="搜索一下" class="btn" id="query_btn">
+            </form>
+        </div>
+    </main>
+    <div style="clear:both"></div>
+    <div class="xing_vb">
+        <ul>
+            <li>
+                <span class="xing_vb1">影片名称</span>
+                <span class="xing_vb2">影片类别</span>
+                <span class="xing_vb3">更新时间</span>
+            </li>
+        </ul>
+        {% for video in video_list %}
+            <ul>
+                <li><span class="tt"></span><span class="xing_vb4"><a href="/video/detail{{ video.URL }}"
+
+                >{{ video.name }}</a></span> <span
+                        class="xing_vb5">{{ video.type }}</span> <span class="xing_vb6">{{ video.time }}</span></li>
+            </ul>
+        {% empty %}
+            <ul style="display:block;clear:both;">
+                无搜索的影片！
+            </ul>
+        {% endfor %}
+    </div>
+{% endblock main %}

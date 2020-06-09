@@ -23,7 +23,7 @@ with open(os.path.join(BASE_DIR, 'blogproject', 'secret_key.txt'))as f:
     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".zxm1221.com"]
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',  # 注册 blog 应用
     'comments.apps.CommentsConfig',  # 注册 comments 应用
     'visits.apps.VisitsConfig',
+    'video.apps.VideoConfig',
     'mdeditor',  # 注册markdown
 ]
 
@@ -130,6 +131,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, '/static/'),)
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 QQWRY_ROOT = os.path.join(BASE_DIR, 'visits', 'qqwry.dat')

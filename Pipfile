@@ -14,6 +14,10 @@ django-pure-pagination = "*"
 django-haystack = "*"
 django-mdeditor = "*"
 qqwry-py3 = "*"
+lxml = "*"
+pycryptodome = "*"
+cryto = "*"
+pycryptodemo = "*"
 
 [requires]
 python_version = "3.8"

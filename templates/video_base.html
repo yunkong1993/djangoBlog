@@ -1,5 +1,5 @@
 ﻿{% load static %}
-{% load blog_extras %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,12 +14,20 @@
     <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/pace.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/custom.css' %}">
-    <link href="https://cdn.bootcss.com/highlight.js/9.15.8/styles/github.min.css" rel="stylesheet">
 
     <!-- 卡通看板娘 -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" type="text/css" href="{% static 'blog/css/assets/waifu1.css' %}"/>
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- video.js -->
+    <link rel="stylesheet" href="{% static '/static/video/css/video-js.min.css' %}">
+    <script src={% static '/static/video/js/video.min.js' %}></script>
+    <link href="/static/video/css/home.css" rel="stylesheet" type="text/css"/>
+    <script src="/static/video/js/jquery_ldg.js"></script>
+    <script src="/static/video/js/jquery.lazyload.js"></script>
+    <script src="/static/video/js/ldg.js"></script>
+    <script src="/static/video/js/home.js"></script>
     <style>
         .codehilite {
             padding: 0;
@@ -51,10 +59,6 @@
             white-space: pre;
         }
 
-        /* 搜索关键词高亮 */
-        span.highlighted {
-            color: #ff0000;
-        }
     </style>
     <!-- js -->
     <script src="{% static 'blog/js/jquery-2.1.3.min.js' %}"></script>
@@ -71,7 +75,7 @@
         <div class="row">
             <div class="col-md-4 col-sm-5 col-xs-8">
                 <div class="logo">
-                    <h1><a href="{% url 'blog:index' %}"><b>凌波浪子</b> &amp; 博客</a></h1>
+                    <h1><a href="{% url 'blog:index' %}"><b>凌波浪子</b> &amp; 影院</a></h1>
                 </div>
             </div><!-- col-md-4 -->
             <div class="col-md-8 col-sm-7 col-xs-4">
@@ -127,15 +131,6 @@
     <script src="{% static 'blog/css/assets/waifu-tips.js' %}"></script>
     <script type="text/javascript">initModel()</script>
 
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endif %}
 </div>
 <div class="copyrights">Collect from <a href="http://www.cssmoban.com/">网页模板</a></div>
 <div class="copyrights">Modified by <a href="http://zmrenwu.com/">追梦人物的博客</a></div>
@@ -147,19 +142,7 @@
                 {% block main %}
                 {% endblock main %}
             </main>
-            <aside class="col-md-4">
-                {% block toc %}
-                {% endblock toc %}
 
-                {% show_recent_posts %}
-                {% show_archives %}
-                {% show_categories %}
-                {% show_tags %}
-
-                <div class="rss">
-                    <a href="{% url 'rss' %}"><span class="ion-social-rss-outline"></span> RSS 订阅</a>
-                </div>
-            </aside>
         </div>
     </div>
 </div>
@@ -205,12 +188,5 @@
     </nav>
 </div>
 
-<script src="{% static 'blog/js/script.js' %}"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.8/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
-<script>
-    hljs.initHighlightingOnLoad();
-    hljs.initLineNumbersOnLoad();
-</script>
 </body>
 </html>

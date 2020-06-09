@@ -1,0 +1,100 @@
+{% extends 'video_base.html' %}
+{% block main %}
+    <main class="col-md-12">
+        <div class="searchbox" style="margin-bottom: 20px">
+            <form onsubmit="" method="get" id="soform" action="/video/search">
+                <select>
+                    <option value="zuidazy">线路1</option>
+                    <option value="okzy">线路2</option>
+                    <option value="subo">线路3</option>
+                    <option value="mahuazy">线路4</option>
+                </select>
+                <input autocomplete="off" size="50" maxlength="100" value="" id="query_kw" class="query"
+                       name="q"
+                       style="line-height:13px"
+                       placeholder=""
+                       required>
+                <input type="submit" align="middle" value="搜索一下" class="btn" id="query_btn">
+            </form>
+        </div>
+
+
+        <div class="warp">
+            <div class="ibox">
+                <div class="vod">
+                    <div class="vodBox">
+                        <div class="vodImg">
+                            <img class="lazy"
+                                 src="{{ video_detail.img }}"
+                                 alt="{{ video_detail.story }}"/>
+                            <b class="b1"></b>
+                            <b class="b2"></b>
+                        </div>
+                        <div class="vodInfo">
+                            <div class="vodh">
+                                <h2>{{ video_detail.name }}</h2>
+                                <span>{{ video_detail.HD_type }}</span>
+                            </div>
+                            <div class="vodinfobox">
+                                <ul>
+                                    <li>别名：<span>{{ video_detail.alias }}</span></li>
+                                    <li>导演：<span>{{ video_detail.director }}</span></li>
+                                    <li>主演：<span>{{ video_detail.leading_star }}</span></li>
+                                    <li>类型：<span>{{ video_detail.type }} </span></li>
+                                    <li class="sm">地区：<span>{{ video_detail.area }}</span></li>
+                                    <li class="sm">语言：<span>{{ video_detail.language }}</span></li>
+                                    <li class="sm">片长：<span>{{ video_detail.video_length }}</span></li>
+                                    <li class="sm">更新：<span>{{ video_detail.update_time }}</span></li>
+                                    <li class="cont">
+                                        <div class="jjText">
+                                            <span class="cl"></span>
+                                            <span class="more"
+                                            >{{ video_detail.story }}</span>
+
+                                            <span class="cr"></span>
+                                        </div>
+                                    </li>
+                                    <li class="tags"><span></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="vodAd">
+                            <script type="text/javascript" src="/template/ziyuan3/ads/detail300X320.js"></script>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- 心情开始 -->
+            <!-- 开始 -->
+            <div class="ibox playBox">
+                <div class="playBar liketitle">
+                    <strong>剧情介绍：</strong>
+                </div>
+                <div class="vodplayinfo">{{ video_detail.story }} </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="vodplayinfo">
+        <div style="padding-left:10px;word-break: break-all; word-wrap:break-word;">
+            <div id="down_1">
+                <h3>点播：<span class="suf">在线点播</span></h3>
+                <ul>
+                    {% for video_item in video_items %}
+                        <a href="/video/play/?p={{ video_item.http }}">
+                            <input type="button" name="Submit" value="{{ video_item.name }}"/>
+                            &nbsp;
+                        </a>
+                    {% empty %}
+                        <ul style="display:block;clear:both;">
+                            无搜索的影片！
+                        </ul>
+                    {% endfor %}
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock main %}
