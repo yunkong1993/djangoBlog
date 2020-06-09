@@ -1,17 +1,17 @@
 {% extends 'video_base.html' %}
 {% block main %}
     <main class="col-md-12">
-        <div class="searchbox" style="margin-bottom: 20px">
+        <div class="searchbox" style="margin-bottom: 20px;text-align:center">
             <form onsubmit="" method="get" id="soform" action="/video/search">
-                <select>
+                <select style="width:80px;height:30px;line-height:30px;">
                     <option value="zuidazy">线路1</option>
                     <option value="okzy">线路2</option>
                     <option value="subo">线路3</option>
                     <option value="mahuazy">线路4</option>
                 </select>
-                <input autocomplete="off" size="50" maxlength="100" value="" id="query_kw" class="query"
+                <input autocomplete="off" size="60" maxlength="100" value="" id="query_kw" class="query"
                        name="q"
-                       style="line-height:13px"
+                       style="line-height:25px"
                        placeholder=""
                        required>
                 <input type="submit" align="middle" value="搜索一下" class="btn" id="query_btn">
@@ -73,28 +73,32 @@
             </div>
         </div>
     </main>
+    <div class="ibox playBox">
 
-    <div class="vodplayinfo">
-        <div style="padding-left:10px;word-break: break-all; word-wrap:break-word;">
-            <div id="down_1">
-                <h3>点播：<span class="suf">在线点播</span></h3>
-                <ul>
-                    {% for video_item in video_items %}
-                        <a href="/video/play/?p={{ video_item.http }}">
-                            <input type="button" name="Submit" value="{{ video_item.name }}"/>
-                            &nbsp;
-                        </a>
-                    {% empty %}
-                        <ul style="display:block;clear:both;">
-                            无搜索的影片！
-                        </ul>
-                    {% endfor %}
-                </ul>
+        <div class="playBar liketitle">
+            <strong>影片点播：</strong>
+        </div>
+        <div class="vodplayinfo">
+            <div style="padding-left:10px;word-break: break-all; word-wrap:break-word;">
+                <div id="down_1">
+                    <ul>
+                        {% for video_item in video_items %}
+                            <a href="/video/play/?p={{ video_item.http }}">
+                                <input type="button" name="Submit" value="{{ video_item.name }}"/>
+                            </a>
+                        {% empty %}
+                            <ul style="display:block;clear:both;">
+                                无搜索的影片！
+                            </ul>
+                        {% endfor %}
+                    </ul>
+
+                </div>
 
             </div>
 
         </div>
 
-    </div>
 
+    </div>
 {% endblock main %}
