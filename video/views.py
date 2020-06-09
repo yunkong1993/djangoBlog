@@ -26,9 +26,9 @@ def my_login_required(func):
 
     def check_login_status(request):
         '''检查登录状态'''
-        if request.session.has_key('user_id'):
+        if request.user.is_authenticated:
             # 当前有用户登录，正常跳转
-            return search(request)
+            return func(request)
         else:
             # 当前没有用户登录，跳转到登录页面
             return HttpResponseRedirect('/admin')
