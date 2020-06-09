@@ -6,7 +6,7 @@ from .get_index import get_index_list
 from .get_detail import get_detail
 from .models import VideoDetailItem
 from .AES import decrypt_string
-import json
+import json, re
 
 
 class VideoView(TemplateView):
@@ -31,7 +31,9 @@ def my_login_required(func):
             return func(request)
         else:
             # 当前没有用户登录，跳转到登录页面
-            return HttpResponseRedirect('/admin')
+            error_msg = "需要登陆权限，请先登陆"
+            messages.add_message(request, messages.ERROR, error_msg, extra_tags='danger')
+            return HttpResponseRedirect('/video')
 
     return check_login_status
 
@@ -60,8 +62,6 @@ def detail(request):
         return redirect('blog:index')
 
     video_detail, video_items = get_detail(url=m)
-    # gb_video_items = video_items
-    # print(video_detail)
     return render(request, 'video/video_detail.html', {'video_detail': video_detail, 'video_items': video_items})
 
 
@@ -73,7 +73,12 @@ def play(request):
         error_msg = "无效地址"
         messages.add_message(request, messages.ERROR, error_msg, extra_tags='danger')
         return redirect('blog:index')
-    # pc = AesCrypto(key=b"keyskeyskeyskeyskeyskeyskeyskeys", IV=b"keyskeyskeyskeys")
-    http = decrypt_string(p)
-    http = json.loads(http)
-    return render(request, 'video/video_play.html', {'http': http})
+    http = json.loads(decrypt_string(p))
+    # pattern = re.compile(r'\.[^.\\/:*?"<>|\r\n]+$')
+    # video_type = re.match(pattern, http).group(0)
+    video_type = http[-4:]
+    if 'm3u8' in video_type:
+        play_type = "application/x-mpegURL"
+    else:
+        play_type = "video/mp4"
+    return render(request, 'video/video_play.html', {'http': http, 'play_type': play_type})
