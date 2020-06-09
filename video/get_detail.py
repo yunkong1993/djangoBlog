@@ -18,18 +18,30 @@ def get_detail(url=''):
     doc = etree.HTML(response)
     item = VideoDetailItem()
     try:
-        item.name = doc.xpath("//div[2]/div[1]/h2/text()")[0]
-        item.HD_type = doc.xpath("//div[2]/div[1]/span/text()")[0]  # 高清，集数等
-        item.alias = doc.xpath("//div[2]/div[2]/ul/li[1]/span/text()")[0]
-        item.img = doc.xpath("//div[1]/div/div/div[1]/img/@src")[0]
-        item.director = doc.xpath("//div[2]/div[2]/ul/li[2]/span/text()")[0]
-        item.leading_star = doc.xpath("//div[2]/div[2]/ul/li[3]/span/text()")[0]
-        item.type = doc.xpath("//div[2]/div[2]/ul/li[4]/span/text()")[0]
-        item.area = doc.xpath("//div[2]/div[2]/ul/li[5]/span/text()")[0]
-        item.language = doc.xpath("//div[2]/div[2]/ul/li[6]/span/text()")[0]
-        item.video_length = doc.xpath("//div[2]/div[2]/ul/li[8]/span/text()")[0]
-        item.update_time = doc.xpath("//div[2]/div[2]/ul/li[9]/span/text()")[0]
-        item.story = doc.xpath("//div[2]/div[2]/ul/li[14]/div/span[2]/text()")[0]
+        if doc.xpath("//div[2]/div[1]/h2/text()"):
+            item.name = doc.xpath("//div[2]/div[1]/h2/text()")[0]
+        if doc.xpath("//div[2]/div[1]/span/text()"):
+            item.HD_type = doc.xpath("//div[2]/div[1]/span/text()")[0]  # 高清，集数等
+        if doc.xpath("//div[2]/div[2]/ul/li[1]/span/text()"):
+            item.alias = doc.xpath("//div[2]/div[2]/ul/li[1]/span/text()")[0]
+        if doc.xpath("//div[1]/div/div/div[1]/img/@src"):
+           item.img = doc.xpath("//div[1]/div/div/div[1]/img/@src")[0]
+        if doc.xpath("//div[2]/div[2]/ul/li[2]/span/text()"):
+            item.director = doc.xpath("//div[2]/div[2]/ul/li[2]/span/text()")[0]
+        if doc.xpath("//div[2]/div[2]/ul/li[3]/span/text()"):
+            item.leading_star = doc.xpath("//div[2]/div[2]/ul/li[3]/span/text()")[0]
+        if doc.xpath("//div[2]/div[2]/ul/li[4]/span/text()"):
+            item.type = doc.xpath("//div[2]/div[2]/ul/li[4]/span/text()")[0]
+        if doc.xpath("//div[2]/div[2]/ul/li[5]/span/text()"):
+            item.area = doc.xpath("//div[2]/div[2]/ul/li[5]/span/text()")[0]
+        if doc.xpath("//div[2]/div[2]/ul/li[6]/span/text()"):
+            item.language = doc.xpath("//div[2]/div[2]/ul/li[6]/span/text()")[0]
+        if doc.xpath("//div[2]/div[2]/ul/li[8]/span/text()"):
+            item.video_length = doc.xpath("//div[2]/div[2]/ul/li[8]/span/text()")[0]
+        if doc.xpath("//div[2]/div[2]/ul/li[9]/span/text()"):
+            item.update_time = doc.xpath("//div[2]/div[2]/ul/li[9]/span/text()")[0]
+        if doc.xpath("//div[2]/div[2]/ul/li[14]/div/span[2]/text()"):
+            item.story = doc.xpath("//div[2]/div[2]/ul/li[14]/div/span[2]/text()")[0]
     except IndexError:
         pass
     video_items = []
