@@ -5,9 +5,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 from .get_index import get_index_list
 from .get_detail import get_detail
 from .models import VideoDetailItem
-from .AES import decrypt_string
-import json, re
+from .AES import AesCrypto
 from urllib.parse import quote
+from django.conf import settings
 
 
 class VideoView(TemplateView):
@@ -74,9 +74,8 @@ def play(request):
         error_msg = "无效地址"
         messages.add_message(request, messages.ERROR, error_msg, extra_tags='danger')
         return redirect('blog:index')
-    http = json.loads(decrypt_string(p))
-    # pattern = re.compile(r'\.[^.\\/:*?"<>|\r\n]+$')
-    # video_type = re.match(pattern, http).group(0)
+    my_crypt = AesCrypto(bytes(settings.AES_KEY, encoding='utf-8'))
+    http = my_crypt.decrypt(p)
     video_type = http[-4:]
     if 'm3u8' in video_type:
         play_type = "application/x-mpegURL"

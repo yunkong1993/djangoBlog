@@ -3,8 +3,8 @@ import urllib.parse
 from .models import VideoDetailItem, VideoPlayItem
 from lxml import etree
 import re
-from .AES import AesCrypto, encrypt_string
-import json
+from .AES import AesCrypto
+from django.conf import settings
 
 
 def get_detail(url=''):
@@ -50,10 +50,12 @@ def get_detail(url=''):
     if len(names) == 0 or len(https) == 0:
         names = doc.xpath("//*[@id='play_1']/ul/li/text()")
         https = doc.xpath("//*[@id='play_1']/ul/li/input/@value")
-    for name, http in zip(names, https):
+    for name, http_url in zip(names, https):
         video_play = VideoPlayItem()
         pattern = re.compile(r'^.*\$')
         video_play.name = re.match(pattern, name).group(0)[0:-1]
-        video_play.http = encrypt_string(json.dumps(http))
+        my_crypt = AesCrypto(bytes(settings.AES_KEY, encoding='utf-8'))
+        http_bytes = my_crypt.encrypt(http_url)
+        video_play.http = str(http_bytes, encoding="utf8")
         video_items.append(video_play)
     return item, video_items

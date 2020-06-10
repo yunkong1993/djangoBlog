@@ -20,7 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 with open(os.path.join(BASE_DIR, 'blogproject', 'secret_key.txt'))as f:
-    SECRET_KEY = f.read().strip()
+    lines = f.readlines()
+    SECRET_KEY = lines[0].strip()
+    AES_KEY = lines[1].strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
