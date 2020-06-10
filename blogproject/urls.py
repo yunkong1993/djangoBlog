@@ -19,6 +19,7 @@ from blog.feeds import AllPostsRssFeed
 from django.conf import settings
 from django.conf.urls import url, include
 from django.views import static
+from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +27,9 @@ urlpatterns = [
     path('', include('comments.urls')),
     path('', include('visits.urls')),
     path('', include('video.urls')),
+
+    path(r'login/', LoginView.as_view(), name='login'),
+    path(r'logout/', LogoutView.as_view(), name='logout'),
     path('all/rss/', AllPostsRssFeed(), name='rss'),
     url(r'^static/(?P<path>.*)$', static.serve, {'document_root': settings.STATIC_ROOT}, name='static'),
 ]

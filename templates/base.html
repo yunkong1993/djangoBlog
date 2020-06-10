@@ -88,8 +88,13 @@
                             <li class="cl-effect-11"><a href="{% url 'video:video' %}" data-hover="视频">视频</a></li>
                             <li class="cl-effect-11"><a href="{% url 'blog:about' %}" data-hover="关于">关于</a></li>
                             <li class="cl-effect-11"><a href="{% url 'blog:contact' %}" data-hover="联系">联系</a></li>
-                            <li class="cl-effect-11"><a id="login" href="/login/" title="登录"><span
-                                    class="ion-log-in"></span></a></li>
+                            {% if request.user.is_authenticated %}
+                                <li class="cl-effect-11"><a id="logout" href="{% url 'logout' %}" title="注销"><span
+                                        class="ion-log-out"></span></a></li>
+                            {% else %}
+                                <li class="cl-effect-11"><a id="login" href="{% url 'login' %}" title="登录"><span
+                                        class="ion-log-in"></span></a></li>
+                            {% endif %}
                         </ul>
 
                     </div><!-- /.navbar-collapse -->
@@ -201,6 +206,13 @@
         <li><a href="{% url 'video:video' %}">视频</a></li>
         <li><a href="/about">关于</a></li>
         <li><a href="/contact">联系</a></li>
+        {% if request.user.is_authenticated %}
+            <li class="cl-effect-11"><a id="logout" href="{% url 'logout' %}" title="注销"><span
+                    class="ion-log-out"></span></a></li>
+        {% else %}
+            <li class="cl-effect-11"><a id="login" href="{% url 'login' %}" title="登录"><span
+                    class="ion-log-in"></span></a></li>
+        {% endif %}
         </ul>
     </nav>
 </div>
