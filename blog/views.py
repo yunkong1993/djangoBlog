@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import DetailView, ListView, TemplateView
-
+from django.http import HttpResponse
 from pure_pagination.mixins import PaginationMixin
 from django.contrib import messages
 from .models import Category, Post, Tag
@@ -100,3 +100,15 @@ def search(request):
 
     post_list = Post.objects.filter(Q(title__icontains=q) | Q(body__icontains=q), is_private=False)
     return render(request, 'blog/index.html', {'post_list': post_list})
+
+
+def login_action(request):
+    if request.method == 'POST':
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
+        if username == 'admin' and password == '123456':
+            return HttpResponse('login success')
+        elif username == '' or password == '':
+            return render(request, 'index.html', {'error1': 'username or password is null!'})
+        else:
+            return render(request, 'index.html', {'error2': 'username or password error!'})
