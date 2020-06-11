@@ -1,22 +1,6 @@
 {% extends 'video_base.html' %}
 {% block main %}
     <main class="col-md-12">
-        <div class="searchbox" style="margin-bottom: 20px;text-align:center">
-            <form onsubmit="" method="get" id="soform" action="/video/search">
-                <select style="width:80px;height:30px;line-height:30px;">
-                    <option value="zuidazy">线路1</option>
-                    <option value="okzy">线路2</option>
-                    <option value="subo">线路3</option>
-                    <option value="mahuazy">线路4</option>
-                </select>
-                <input autocomplete="off" size="60" maxlength="100" value="" id="query_kw" class="query"
-                       name="q"
-                       style="line-height:25px"
-                       placeholder=""
-                       required>
-                <input type="submit" align="middle" value="搜索一下" class="btn" id="query_btn">
-            </form>
-        </div>
         <h3>{{ name }}</h3><br>
         <div class="m">
             <video id="my-video" class="video-js  vjs-big-play-centered" controls preload="auto" width="960"
