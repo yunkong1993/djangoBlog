@@ -47,6 +47,7 @@ def get_detail(url=''):
     video_items = []
     names = doc.xpath("//*[@id='down_1']/ul/li/text()")
     https = doc.xpath("//*[@id='down_1']/ul/li/input/@value")
+    video_name = doc.xpath("//div[2]/div[1]/h2/text()")
     if len(names) == 0 or len(https) == 0:
         names = doc.xpath("//*[@id='play_1']/ul/li/text()")
         https = doc.xpath("//*[@id='play_1']/ul/li/input/@value")
@@ -57,5 +58,7 @@ def get_detail(url=''):
         my_crypt = AesCrypto(bytes(settings.AES_KEY, encoding='utf-8'))
         http_bytes = my_crypt.encrypt(http_url)
         video_play.http = str(http_bytes, encoding="utf8")
+        full_name = video_name[0] + '  '+video_play.name
+        video_play.full_name = str(my_crypt.encrypt(full_name), encoding="utf8")
         video_items.append(video_play)
     return item, video_items

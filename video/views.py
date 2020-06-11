@@ -69,16 +69,18 @@ def detail(request):
 @my_login_required
 def play(request):
     p = request.GET.get('p')
+    n = request.GET.get('n')
 
-    if not p:
+    if not p or not n:
         error_msg = "无效地址"
         messages.add_message(request, messages.ERROR, error_msg, extra_tags='danger')
         return redirect('blog:index')
     my_crypt = AesCrypto(bytes(settings.AES_KEY, encoding='utf-8'))
     http = my_crypt.decrypt(p)
+    name = my_crypt.decrypt(n)
     video_type = http[-4:]
     if 'm3u8' in video_type:
         play_type = "application/x-mpegURL"
     else:
         play_type = "video/mp4"
-    return render(request, 'video/video_play.html', {'http': http, 'play_type': play_type})
+    return render(request, 'video/video_play.html', {'http': http, 'name': name, 'play_type': play_type})

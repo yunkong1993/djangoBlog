@@ -17,9 +17,10 @@
                 <input type="submit" align="middle" value="搜索一下" class="btn" id="query_btn">
             </form>
         </div>
-
+        <h3>{{ name }}</h3><br>
         <div class="m">
-            <video id="my-video" class="video-js" controls preload="auto" width="960" height="400"
+            <video id="my-video" class="video-js  vjs-big-play-centered" controls preload="auto" width="960"
+                   height="400"
                    poster="m.jpg" data-setup="{}">
                 <source src="{{ http }}" type="{{ play_type }}">
                 <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">

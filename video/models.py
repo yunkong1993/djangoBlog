@@ -2,15 +2,16 @@ from django.db import models
 
 
 class VideoIndexItem(models.Model):
-    name = models.CharField('影片名称', max_length=70)
-    type = models.CharField('影片类别', max_length=30)
-    time = models.CharField('更新时间', max_length=30)
-    URL = models.CharField('链接', max_length=30)
+    name = models.CharField('影片名称', max_length=70, default='')
+    type = models.CharField('影片类别', max_length=30, default='')
+    time = models.CharField('更新时间', max_length=30, default='')
+    URL = models.CharField('链接', max_length=30, default='')
 
 
 class VideoPlayItem(models.Model):
-    name = models.CharField('集数', max_length=30)
-    http = models.CharField('影片链接', max_length=50)
+    name = models.CharField('集数', max_length=30, default='')
+    full_name = models.CharField('集数', max_length=50, default='')
+    http = models.CharField('影片链接', max_length=50, default='')
 
 
 class VideoDetailItem(models.Model):

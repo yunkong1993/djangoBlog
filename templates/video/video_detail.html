@@ -1,5 +1,13 @@
 {% extends 'video_base.html' %}
 {% block main %}
+        <style type="text/css">
+        .p1 {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            -webkit-box-orient: vertical;
+        }</style>
     <main class="col-md-12">
         <div class="searchbox" style="margin-bottom: 20px;text-align:center">
             <form onsubmit="" method="get" id="soform" action="/video/search">
@@ -48,7 +56,7 @@
                                     <li class="cont">
                                         <div class="jjText">
                                             <span class="cl"></span>
-                                            <span class="more"
+                                            <span class="p1"
                                             >{{ video_detail.story }}</span>
 
                                             <span class="cr"></span>
@@ -83,7 +91,7 @@
                 <div id="down_1">
                     <ul>
                         {% for video_item in video_items %}
-                            <a href="/video/play/?p={{ video_item.http }}">
+                            <a href="/video/play/?p={{ video_item.http }}&n={{ video_item.full_name }}" target="_blank">
                                 <input type="button" name="Submit" value="{{ video_item.name }}"/>
                             </a>
                         {% empty %}
