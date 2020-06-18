@@ -3,7 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>个人博客</title>
+    {% block title %}
+        <title>个人影院</title>
+    {% endblock %}
 
     <!-- meta -->
     <meta charset="UTF-8">
@@ -75,7 +77,7 @@
         <div class="row">
             <div class="col-md-4 col-sm-5 col-xs-8">
                 <div class="logo">
-                    <h1><a href="{% url 'blog:index' %}"><b>凌波浪子</b> &amp; 影院</a></h1>
+                    <h1><a href="{% url 'video:video' %}"><b>凌波浪子</b> &amp; 影院</a></h1>
                 </div>
             </div><!-- col-md-4 -->
             <div class="col-md-8 col-sm-7 col-xs-4">
@@ -93,27 +95,17 @@
                             <li class="cl-effect-11"><a href="{% url 'blog:about' %}" data-hover="关于">关于</a></li>
                             <li class="cl-effect-11"><a href="{% url 'blog:contact' %}" data-hover="联系">联系</a></li>
                             {% if request.user.is_authenticated %}
-                                <li class="cl-effect-11"><a id="logout" href="{% url 'logout' %}" title="用户 {{request.user}} 已登录，点击注销"><span
+                                <li class="cl-effect-11"><a id="logout" href="{% url 'logout' %}"
+                                                            title="用户 {{ request.user }} 已登录，点击注销"><span
                                         class="ion-log-out"></span></a></li>
                             {% else %}
                                 <li class="cl-effect-11"><a id="login" href="{% url 'login' %}" title="登录"><span
                                         class="ion-log-in"></span></a></li>
                             {% endif %}
                         </ul>
-
                     </div><!-- /.navbar-collapse -->
 
                 </nav>
-                <div id="header-search-box">
-                    <a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>
-                    <div id="search-form" class="search-form">
-                        <form role="search" method="get" id="searchform" action="{% url 'blog:search' %}">
-                            <input type="search" name="q" placeholder="搜索" required>
-                            <button type="submit"><span class="ion-ios-search-strong"></span></button>
-                        </form>
-                    </div>
-                </div>
-
             </div><!-- col-md-8 -->
         </div>
     </header>
@@ -198,7 +190,7 @@
         <li><a href="/about">关于</a></li>
         <li><a href="/contact">联系</a></li>
         {% if request.user.is_authenticated %}
-            <li class="cl-effect-11"><a id="logout" href="{% url 'logout' %}" >注销</a></li>
+            <li class="cl-effect-11"><a id="logout" href="{% url 'logout' %}">注销</a></li>
         {% else %}
             <li class="cl-effect-11"><a id="login" href="{% url 'login' %}">登录</a></li>
         {% endif %}
