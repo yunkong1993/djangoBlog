@@ -33,5 +33,5 @@ def get_index_list(q=''):
         item.type = type
         item.time = time
         items.append(item)
-        print(item)
+        # print(item)
     return items
