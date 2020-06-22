@@ -5,14 +5,15 @@ from lxml import etree
 import re
 from .AES import AesCrypto
 from django.conf import settings
+from .sitis_list import sitis_tuple
 
 
-def get_detail(url=''):
-    url1 = "http://www.zuidazy5.com/?m=" + url
-    header = {}
-    header[
-        "User-Agent"] = r"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3854.3 Safari/537.36"
-    req = urllib.request.Request(url1)
+def get_detail(i=0, m=''):
+    url = sitis_tuple[int(i)]['view'].format(m=m)
+    # url1 = "http://www.zuidazy5.com/?m=" + url
+    header = {
+        "User-Agent": r"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3854.3 Safari/537.36"}
+    req = urllib.request.Request(url)
     req.add_header("User-Agent", header["User-Agent"])
     response = urllib.request.urlopen(req, timeout=15).read()
     doc = etree.HTML(response)
@@ -58,7 +59,7 @@ def get_detail(url=''):
         my_crypt = AesCrypto(bytes(settings.AES_KEY, encoding='utf-8'))
         http_bytes = my_crypt.encrypt(http_url)
         video_play.http = str(http_bytes, encoding="utf8")
-        full_name = video_name[0] + '  '+video_play.name
+        full_name = video_name[0] + '  ' + video_play.name
         video_play.full_name = str(my_crypt.encrypt(full_name), encoding="utf8")
         video_items.append(video_play)
     return item, video_items

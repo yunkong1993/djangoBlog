@@ -42,27 +42,27 @@ def my_login_required(func):
 @my_login_required
 def search(request):
     q = request.GET.get('q')
-
+    i = request.GET.get('carlist')
     if not q:
         error_msg = "请输入搜索关键词"
         messages.add_message(request, messages.ERROR, error_msg, extra_tags='danger')
         return redirect('blog:index')
     q = quote(q)
-    video_list = get_index_list(q=q)
+    video_list = get_index_list(i=i, q=q)
 
-    return render(request, 'video/video_index.html', {'video_list': video_list})
+    return render(request, 'video/video_index.html', {'video_list': video_list, 'i':i})
 
 
 @my_login_required
 def detail(request):
     m = request.GET.get('m')
-
+    i = request.GET.get('carlist')
     if not m:
         error_msg = "无效地址"
         messages.add_message(request, messages.ERROR, error_msg, extra_tags='danger')
         return redirect('blog:index')
 
-    video_detail, video_items = get_detail(url=m)
+    video_detail, video_items = get_detail(i=i, m=m)
     return render(request, 'video/video_detail.html', {'video_detail': video_detail, 'video_items': video_items})
 
 
