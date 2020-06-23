@@ -5,6 +5,7 @@ import string
 from .models import VideoIndexItem
 from lxml import etree
 from .sitis_list import sitis_tuple
+import ssl
 
 
 def get_index_list(i=0, q=''):
@@ -13,9 +14,9 @@ def get_index_list(i=0, q=''):
     # url = "http://www.zuidazy5.com/index.php?m=vod-search-pg-" + str(pg) + "-wd-" + str(q) + ".html"
     url = sitis_tuple[int(i)]['search'].format(page=str(pg), keywords=str(q))
     url = quote(url, safe=string.printable)
-    header = {}
-    header[
-        "User-Agent"] = r"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3854.3 Safari/537.36"
+    ssl._create_default_https_context = ssl._create_unverified_context
+    header = {
+        "User-Agent": r"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3854.3 Safari/537.36"}
     req = urllib.request.Request(url)
     req.add_header("User-Agent", header["User-Agent"])
     response = urllib.request.urlopen(req, timeout=15).read()
