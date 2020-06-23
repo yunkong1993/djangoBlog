@@ -14,10 +14,10 @@ def get_detail(i=0, m=''):
     # url1 = "http://www.zuidazy5.com/?m=" + url
     header = {
         "User-Agent": r"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3854.3 Safari/537.36"}
-    context = ssl._create_unverified_context()
+    ssl._create_default_https_context = ssl._create_unverified_context
     req = urllib.request.Request(url)
     req.add_header("User-Agent", header["User-Agent"])
-    response = urllib.request.urlopen(req, timeout=15, context=context).read()
+    response = urllib.request.urlopen(req, timeout=15).read()
     doc = etree.HTML(response)
     item = VideoDetailItem()
     try:
