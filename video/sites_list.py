@@ -124,9 +124,9 @@ site5 = \
         'language_xpath': "//div[2]/div[2]/ul/li[6]/span/text()",
         'video_length_xpath': "//div[2]/div[2]/ul/li[8]/span/text()",
         'update_time_xpath': "//div[2]/div[2]/ul/li[9]/span/text()",
-        'story_xpath': "//div[2]/div[2]/ul/li[14]/div/span[2]/text()",
+        'story_xpath': "//div[6]/div[2]/div[2]/span/text()",
 
-        'names_xpath': "//div[3]/font/div/div/ul[1]/li/text()",
+        'names_xpath': "//div[3]//div/div/ul[1]/li/text()",
         'https_xpath': "//div/div/ul[2]/li/input/@value",
         'video_name_xpath': "//div[2]/div[1]/h2/text()",
     }
