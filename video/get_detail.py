@@ -45,8 +45,6 @@ def get_detail(i=0, m=''):
             item.update_time = doc.xpath(site['update_time_xpath'])[0]
         if doc.xpath(site['story_xpath']):
             item.story = doc.xpath(site['story_xpath'])[0]
-        print(item.story)
-        print("***"*30)
     except IndexError:
         pass
     video_items = []
