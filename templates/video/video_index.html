@@ -4,9 +4,9 @@
 {% endblock %}
 {% block main %}
     <main class="col-md-12">
-      <div class="searchbox" style="margin-bottom: 20px;text-align:center">
+        <div class="searchbox" style="margin-bottom: 20px;text-align:center">
             <form onsubmit="" method="get" id="soform" action="/video/search">
-                <select style="width:80px;height:30px;line-height:30px;" name="carlist" >
+                <select style="width:80px;height:30px;line-height:30px;" name="carlist">
                     <option value="1">线路1</option>
                     <option value="2">线路2</option>
                     <option value="3">线路3</option>
@@ -35,7 +35,8 @@
         </ul>
         {% for video in video_list %}
             <ul>
-                <li><span class="tt"></span><span class="xing_vb4"><a href="/video/detail/?carlist={{i}}&{{ video.URL }}"
+                <li><span class="tt"></span><span class="xing_vb4"><a
+                        href="/video/detail/?carlist={{ i }}&{{ video.URL }}"
 
                 >{{ video.name }}</a></span> <span
                         class="xing_vb5">{{ video.type }}</span> <span class="xing_vb6">{{ video.time }}</span></li>
